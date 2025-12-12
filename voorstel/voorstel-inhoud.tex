@@ -5,47 +5,52 @@
 % andere student?
 % Zo ja, haal dan de tekst hieronder uit commentaar en pas aan.
 
-%\paragraph{Opmerking}
+\paragraph{Opmerking}
 
-% Dit voorstel is gebaseerd op het onderzoeksvoorstel dat werd geschreven in het
-% kader van het vak Research Methods dat ik (vorig/dit) academiejaar heb
-% uitgewerkt (met medesturent VOORNAAM NAAM als mede-auteur).
-% 
+Dit voorstel is gebaseerd op het onderzoeksvoorstel dat werd geschreven in het
+kader van het vak Research Methods dat ik vorig academiejaar heb
+uitgewerkt met medesturent Yu-lan Heremans als mede-auteur.
+ 
 
 \section{Inleiding}%
 \label{sec:inleiding}
 
-Waarover zal je bachelorproef gaan? Introduceer het thema en zorg dat volgende zaken zeker duidelijk aanwezig zijn:
+\textcolor{blue}{Het correct inschatten van het nodige personeel is een cruciale uitdaging voor kleine detailhandelaars zoals Bakkerij Bossu in Nazareth. Onvoldoende personeel kan leiden tot overbelasting van het team en tot lange wachttijden, die al snel invloed kunnen hebben op de klanttevredenheid, terwijl te veel personeel onnodige kosten veroorzaakt. Voor bakkers is het dus essentieel om de personeelsplanning efficiënt en nauwkeurig toe te passen.}
 
-\begin{itemize}
-  \item kaderen thema
-  \item de doelgroep
-  \item de probleemstelling en (centrale) onderzoeksvraag
-  \item de onderzoeksdoelstelling
-\end{itemize}
+Om dit probleem aan te pakken, focust deze bachelorproef zich op het gebruik van operationele en contextuele data in combinatie met mach\-ine-learningmodellen om de personeelsbehoefte van een bakkerij aan te tonen op basis van voorspelde verkoopcijfers. De kern van dit onderzoek is dat nauwkeurige verkoopvoorspellingen de bakker in staat stellen om optimaal personeel in te plannen, waardoor zowel de kosten als de klanttevredenheid gemaximaliseerd worden.
 
-Denk er aan: een typische bachelorproef is \textit{toegepast onderzoek}, wat betekent dat je start vanuit een concrete probleemsituatie in bedrijfscontext, een \textbf{casus}. Het is belangrijk om je onderwerp goed af te bakenen: je gaat voor die \textit{ene specifieke probleemsituatie} op zoek naar een goede oplossing, op basis van de huidige kennis in het vakgebied.
+De onderzoeksvraag luidt: \textcolor{blue}{ “Hoe kunnen operationele en contextuele data van bakkers in combinatie met machine-learningmodellen worden ingezet om de benodigde hoeveelheid personeel te bepalen op basis van verkoopvoorspellingen?”}
 
-De doelgroep moet ook concreet en duidelijk zijn, dus geen algemene of vaag gedefinieerde groepen zoals \emph{bedrijven}, \emph{developers}, \emph{Vlamingen}, enz. Je richt je in elk geval op it-professionals, een bachelorproef is geen populariserende tekst. Eén specifiek bedrijf (die te maken hebben met een concrete probleemsituatie) is dus beter dan \emph{bedrijven} in het algemeen.
+Om deze centrale vraag correct te kunnen beantwoorden, worden enkele deelvragen onderzocht. Om de datastructuur te begrijpen, is het interessant om de deelvraag: \textcolor{blue}{ “Hoe sterk variëren de verkoopvolumes tijdens weekends en feestdagen?”} te onderzoeken. Een andere belangrijke deelvraag richt zich op de keuze van het AI-model: \textcolor{blue}{welk machine-learningmodel kan de verkoop het nauwkeurigst voorspellen en daarmee de planning optimaliseren?} Ook de keuze van de te gebruiken data is essentieel voor de voorspelling. \textcolor{blue}{Welke operationele en contextuele data zijn relevant om betrouwbare voorspellingen te maken?} Deze deelvraag houdt hier rekening mee.
 
-Formuleer duidelijk de onderzoeksvraag! De begeleiders lezen nog steeds te veel voorstellen waarin we geen onderzoeksvraag terugvinden.
+De doelstelling van deze bachelorproef is het ontwikkelen van een proof-of-concept voorspellingsmodel dat Bakkerij Bossu ondersteunt bij het plannen van personeel op basis van verkoopvoorspellingen. Daarnaast wordt een kort adviesrapport opgesteld met aanbevelingen voor de planning.
 
-Schrijf ook iets over de doelstelling. Wat zie je als het concrete eindresultaat van je onderzoek, naast de uitgeschreven scriptie? Is het een proof-of-concept, een rapport met aanbevelingen, \ldots Met welk eindresultaat kan je je bachelorproef als een succes beschouwen?
 
 %---------- Stand van zaken ---------------------------------------------------
 
 \section{Literatuurstudie}%
 \label{sec:literatuurstudie}
 
-Hier beschrijf je de \emph{state-of-the-art} rondom je gekozen onderzoeksdomein, d.w.z.\ een inleidende, doorlopende tekst over het onderzoeksdomein van je bachelorproef. Je steunt daarbij heel sterk op de professionele \emph{vakliteratuur}, en niet zozeer op populariserende teksten voor een breed publiek. Wat is de huidige stand van zaken in dit domein, en wat zijn nog eventuele open vragen (die misschien de aanleiding waren tot je onderzoeksvraag!)?
+De inzet van artificiële intelligentie en dataengineering in personeelsplanning krijgt steeds meer aandacht, vooral binnen sectoren waar de behoefte aan personeel sterk fluctueert. Deze literatuurstudie bespreekt relevante inzichten en identificeert de belangrijkste uitdagingen, maar ook de opportuniteiten voor het gebruik van AI binnen personeelsplanning, met specifieke aandacht voor de bakkerij-industrie.
 
-Je mag de titel van deze sectie ook aanpassen (literatuurstudie, stand van zaken, enz.). Zijn er al gelijkaardige onderzoeken gevoerd? Wat concluderen ze? Wat is het verschil met jouw onderzoek?
+\subsection*{1. Vergelijken modelprestaties}
+De literatuur toont een duidelijk onderscheid in prestaties tussen traditionele lineaire modellen en moderne ensemble-methoden. \cite{GangulyMukherjee2024} vergeleek verschillende machine-learningmodellen voor retailverkoopvoorspelling en stelde concrete verschillen vast in prestatie: Random Forest behaalde een R² van 0.945 met een RMSE van 282.07, terwijl lineaire regressie slechts een R² van 0.531 bereikte. Deze resultaten tonen aan dat ensemble-methoden aanzienlijk sterker presteren bij het modelleren van verkooppatronen.  
 
-Verwijs bij elke introductie van een term of bewering over het domein naar de vakliteratuur, bijvoorbeeld~\autocite{Hykes2013}! Denk zeker goed na welke werken je refereert en waarom.
+Gradient Boosting behoort ook tot de best presterende modellen. \cite{GangulyMukherjee2024} rapporteert een R² van 0.942, terwijl \cite{Kang2023} aantoont dat Gradient Boosting in hun studie marginaal beter presteerde dan Random Forest. Deze consistente prestaties op verschillende datasets wijzen erop dat ensemble-methoden geschikt zijn voor het voorspellen van retailverkopen.
 
-Draag zorg voor correcte literatuurverwijzingen! Een bronvermelding hoort thuis \emph{binnen} de zin waar je je op die bron baseert, dus niet er buiten! Maak meteen een verwijzing als je gebruik maakt van een bron. Doe dit dus \emph{niet} aan het einde van een lange paragraaf. Baseer nooit teveel aansluitende tekst op eenzelfde bron.
+\subsection*{2. Rol van operationele en contextuele data}
+\cite{Geboers2012} onderzocht in zijn case study bij Bakkersland B.V. de impact van contextuele variabelen op verkoopvoorspellingen voor de broodindustrie. Het concludeert dat het toevoegen van contextuele data, zoals weersinvloeden, feestdagen en lokale evenementen, de nauwkeurigheid significant verbetert ten opzichte van modellen die enkel historische verkoopdata gebruiken.
 
-Als je informatie over bronnen verzamelt in JabRef, zorg er dan voor dat alle nodige info aanwezig is om de bron terug te vinden (zoals uitvoerig besproken in de lessen Research Methods).
+\subsection*{3. Van voorspelling naar personeelsplanning}
+\cite{Geboers2012} beschrijft in zijn case study hoe verkoopvoorspellingen kunnen worden vertaald naar productieplanning. Voor personeelsplanning vereist dit het definiëren van capaciteitsregels: hoeveel klanten kan één medewerker per tijdseenheid bedienen, wat is de minimale bezetting ongeacht voorspelde drukte, en welke buffer is nodig voor onzekerheid?
+
+\subsection*{4. Conclusie}
+De literatuur toont consistent aan dat ensemble-methoden zoals Random Forest en Gradient Boosting significant beter presteren dan traditionele lineaire modellen voor het voorspellen van verkoop.  
+
+Voor bakkerijen is het integreren van zowel operationele data als contextuele data cruciaal voor een nauwkeurige voorspelling. De combinatie van deze data en machine-learningmodellen stelt kleine ondernemingen in staat om de personeelsplanning te optimaliseren.  
+
+De uitdaging ligt in het praktisch implementeren van deze technologieën. Een proof-of-concept moet niet alleen robuust zijn, maar ook praktisch toepasbaar en gebruiksvriendelijk voor de eindgebruiker.
+
 
 % Voor literatuurverwijzingen zijn er twee belangrijke commando's:
 % \autocite{KEY} => (Auteur, jaartal) Gebruik dit als de naam van de auteur
@@ -54,31 +59,30 @@ Als je informatie over bronnen verzamelt in JabRef, zorg er dan voor dat alle no
 %   functie heeft in de zin (bv. ``Uit onderzoek door Doll & Hill (1954) bleek
 %   ...'')
 
-Je mag deze sectie nog verder onderverdelen in subsecties als dit de structuur van de tekst kan verduidelijken.
-
 %---------- Methodologie ------------------------------------------------------
 \section{Methodologie}%
 \label{sec:methodologie}
 
-Hier beschrijf je hoe je van plan bent het onderzoek te voeren. Welke onderzoekstechniek ga je toepassen om elk van je onderzoeksvragen te beantwoorden? Gebruik je hiervoor literatuurstudie, interviews met belanghebbenden (bv.~voor requirements-analyse), experimenten, simulaties, vergelijkende studie, risico-analyse, PoC, \ldots?
+Het doel van deze bachelorproef is het ontwikkelen van een proof-of-concept dat bakkerij Bossu ondersteunt bij het plannen van zijn personeel. Om de onderzoeksvraag te beantwoorden, wordt het onderzoek opgedeeld in onderstaande iteratieve fasen, die elkaar overlappen en iteratieve verbeteringen toelaten.
 
-Valt je onderwerp onder één van de typische soorten bachelorproeven die besproken zijn in de lessen Research Methods (bv.\ vergelijkende studie of risico-analyse)? Zorg er dan ook voor dat we duidelijk de verschillende stappen terug vinden die we verwachten in dit soort onderzoek!
+\paragraph{Fase 1: Literatuurstudie}
+Deze fase omvat een grondige analyse van literatuur over machine-lea\-rningmodellen voor verkoopvoorspellingen, personeelsplanning in kleine ondernemingen en het gebruik van operationele en contextuele data. Het doel is het selecteren van geschikte modellen voor de casus van bakkerij Bossu, en er kennis over opdoen om deze correct toe te passen op de verzamelde data. Maar ook vaststellen welke soorten data invloed zullen hebben op de verkoop. De deliverable van deze fase is een overzicht dat de selectiecriteria voor machine-learningmodellen en de relevante data-elementen beschrijft. Dit stadium wordt gepland om twee weken in beslag te nemen en dient als basis voor alle verdere fasen.
 
-Vermijd onderzoekstechnieken die geen objectieve, meetbare resultaten kunnen opleveren. Enquêtes, bijvoorbeeld, zijn voor een bachelorproef informatica meestal \textbf{niet geschikt}. De antwoorden zijn eerder meningen dan feiten en in de praktijk blijkt het ook bijzonder moeilijk om voldoende respondenten te vinden. Studenten die een enquête willen voeren, hebben meestal ook geen goede definitie van de populatie, waardoor ook niet kan aangetoond worden dat eventuele resultaten representatief zijn.
+\paragraph{Fase 2: Data-verzameling en -voorbereiding}
+Deze stap richt zich op het verzamelen en voorbereiden van operationele en contextuele data bij bakkerij Bossu. Deze data wordt verzameld uit de winkel van Bossu. Hiertoe behoren verkoopcijfers, openingstijden, seizoen, feestdagen en eventuele lokale evenementen. De data wordt geanalyseerd om trends en correlaties te identificeren zodat de meest rendabele variabelen overblijven. Deze data-analyse wordt uitgevoerd op een Pandas-dataframe en gevisualiseerd via matplotlib. De overblijvende dataset na deze analyse is de deliverable. Dit staat gepland om twee weken in te nemen.
 
-Uit dit onderdeel moet duidelijk naar voor komen dat je bachelorproef ook technisch voldoen\-de diepgang zal bevatten. Het zou niet kloppen als een bachelorproef informatica ook door bv.\ een student marketing zou kunnen uitgevoerd worden.
+\paragraph{Fase 3: Experimenten met machine-learningmodellen}
+Op basis van de literatuurstudie en data-analyse worden meerdere machine-learnin\-gmodellen geselecteerd waaronder verschillende regressiemodellen en random forests. Deze modellen worden getraind en getest op de verzamelde data om de nauwkeurigheid te kunnen evalueren. Deze evaluatie verloopt aan de hand van objectieve metrics zoals RMSE en MAE. Daarna worden er iteratieve verbeteringen doorgevoerd door de hyperparameters aan te passen en de modellen opnieuw te trainen. De deliverable van deze fase is een rapport waarin de prestaties van de verschillende modellen worden vergeleken en het meest geschikte model voor de casus wordt gekozen. De planning voor deze fase bedraagt drie weken.
 
-Je beschrijft ook al welke tools (hardware, software, diensten, \ldots) je denkt hiervoor te gebruiken of te ontwikkelen.
+\paragraph{Fase 4: Proof-of-concept ontwikkeling}
+In fase 4 wordt een proof-of-concept ontwikkeld dat de voorspelde verkoopcijfers omzet naar een berekening van de benodigde personeelsleden. Het prototype richt zich niet op de volledige personeelsplanning, zo is er nog ruimte voor de bakker voor eigen invloeden. Er worden op voorhand capaciteitsregels gedefinieerd, zoals het aantal producten dat één medewerker per tijdseenheid kan verwerken. Op basis van deze regels wordt voorspeld hoeveel werknemers nodig zullen zijn. Dit kan de bakker dan meenemen in zijn planning en zelf werknemers inplannen voor deze hoeveelheden. Het werkende proof-of-concept is de deliverable voor deze fase en deze zal drie weken in beslag nemen.
 
-Probeer ook een tijdschatting te maken. Hoe lang zal je met elke fase van je onderzoek bezig zijn en wat zijn de concrete \emph{deliverables} in elke fase?
 
 %---------- Verwachte resultaten ----------------------------------------------
-\section{Verwacht resultaat, conclusie}%
+\section{Verwacht resultaat, conclusie}
 \label{sec:verwachte_resultaten}
 
-Hier beschrijf je welke resultaten je verwacht. Als je metingen en simulaties uitvoert, kan je hier al mock-ups maken van de grafieken samen met de verwachte conclusies. Benoem zeker al je assen en de onderdelen van de grafiek die je gaat gebruiken. Dit zorgt ervoor dat je concreet weet welk soort data je moet verzamelen en hoe je die moet meten.
+In dit onderzoek wordt verwacht dat één van de geteste machine-learningmodellen duidelijk de beste prestaties zal leveren voor het voorspellen van de verkoop bij Bakkerij Bossu.
+Op basis van de literatuur wordt verwacht dat het voorspellen van de verkopen accuraat kan worden uitgevoerd. Daarnaast suggereren meerdere studies dat lineaire modellen doorgaans minder goed presteren in een retailcontext, terwijl modellen zoals Random Forest en Gradient Boosting vaak tot de best scorende behoren \cite{GangulyMukherjee2024, Kang2023}. Daarom wordt verwacht dat ook in deze casus een ensemble-model de hoogste nauwkeurigheid zal behalen.
 
-Wat heeft de doelgroep van je onderzoek aan het resultaat? Op welke manier zorgt jouw bachelorproef voor een meerwaarde?
-
-Hier beschrijf je wat je verwacht uit je onderzoek, met de motivatie waarom. Het is \textbf{niet} erg indien uit je onderzoek andere resultaten en conclusies vloeien dan dat je hier beschrijft: het is dan juist interessant om te onderzoeken waarom jouw hypothesen niet overeenkomen met de resultaten.
-
+Hoewel deze verwachtingen gebaseerd zijn op bestaande literatuur, blijft het mogelijk dat de resultaten afwijken. Indien een model minder goed presteert dan verwacht, zal worden onderzocht welke factoren bijdragen aan deze overschatting.
