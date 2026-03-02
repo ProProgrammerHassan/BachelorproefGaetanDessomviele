@@ -7,45 +7,26 @@
 
 % Pas na deze inleidende paragraaf komt de eerste sectiehoofding.
 
-Dit hoofdstuk bevat je literatuurstudie. De inhoud gaat verder op de inleiding, maar zal het onderwerp van de bachelorproef *diepgaand* uitspitten. De bedoeling is dat de lezer na lezing van dit hoofdstuk helemaal op de hoogte is van de huidige stand van zaken (state-of-the-art) in het onderzoeksdomein. Iemand die niet vertrouwd is met het onderwerp, weet nu voldoende om de rest van het verhaal te kunnen volgen, zonder dat die er nog andere informatie moet over opzoeken \autocite{Pollefliet2011}.
+Dit hoofdstuk bouwt verder op de inleiding en verdiept zich in de bestaande literatuur rond verkoopvoorspelling en datagedreven personeelsplanning. Waar in het vorige hoofdstuk het probleem en de onderzoeksvragen werden gedefinieerd, wordt hier het wetenschappelijke kader geschetst waarbinnen deze bachelorproef zich situeert. Het doel is om inzicht te geven in de huidige stand van zaken binnen het domein van retail forecasting en machine learning, zodat de gemaakte methodologische keuzes in het volgende hoofdstuk onderbouwd zijn.
 
-Je verwijst bij elke bewering die je doet, vakterm die je introduceert, enz.\ naar je bronnen. In \LaTeX{} kan dat met het commando \texttt{$\backslash${textcite\{\}}} of \texttt{$\backslash${autocite\{\}}}. Als argument van het commando geef je de ``sleutel'' van een ``record'' in een bibliografische databank in het Bib\LaTeX{}-formaat (een tekstbestand). Als je expliciet naar de auteur verwijst in de zin (narratieve referentie), gebruik je \texttt{$\backslash${}textcite\{\}}. Soms is de auteursnaam niet expliciet een onderdeel van de zin, dan gebruik je \texttt{$\backslash${}autocite\{\}} (referentie tussen haakjes). Dit gebruik je bv.~bij een citaat, of om in het bijschrift van een overgenomen afbeelding, broncode, tabel, enz. te verwijzen naar de bron. In de volgende paragraaf een voorbeeld van elk.
+\subsection*{1. Vergelijken modelprestaties}
+De literatuur toont een duidelijk onderscheid in prestaties tussen traditionele lineaire modellen en moderne ensemble-methoden. \cite{GangulyMukherjee2024} vergeleek verschillende machine-learningmodellen voor retailverkoopvoorspelling en stelde concrete verschillen vast in prestatie: Random Forest behaalde een R² van 0.945 met een RMSE van 282.07, terwijl lineaire regressie slechts een R² van 0.531 bereikte. Deze resultaten tonen aan dat ensemble-methoden aanzienlijk sterker presteren bij het modelleren van verkooppatronen.
 
-\textcite{Knuth1998} schreef een van de standaardwerken over sorteer- en zoekalgoritmen. Experten zijn het erover eens dat cloud computing een interessante opportuniteit vormen, zowel voor gebruikers als voor dienstverleners op vlak van informatietechnologie~\autocite{Creeger2009}.
+Gradient Boosting behoort ook tot de best presterende modellen. \cite{GangulyMukherjee2024} rapporteert een R² van 0.942, terwijl \cite{Kang2023} aantoont dat Gradient Boosting in hun studie marginaal beter presteerde dan Random Forest. Daarnaast toont \cite{Easter2024} aan dat XGBoost robuuster presteert dan klassieke tijdreeksmodellen zoals SARIMA bij dagelijkse bakkerijvraagvoorspellingen, met MAE-waarden tussen 0.0041 en 2.0978 en RMSE-waarden tussen 0.1112 en 3.5450. Deze consistente prestaties op verschillende datasets wijzen erop dat ensemble-methoden geschikt zijn voor het voorspellen van retailverkopen.
 
-Let er ook op: het \texttt{cite}-commando voor de punt, dus binnen de zin. Je verwijst meteen naar een bron in de eerste zin die erop gebaseerd is, dus niet pas op het einde van een paragraaf.
+\subsection*{2. Rol van operationele en contextuele data}
+\cite{Geboers2012} onderzocht in zijn case study bij Bakkersland B.V. de impact van contextuele variabelen op verkoopvoorspellingen voor de broodindustrie. Het concludeert dat het toevoegen van contextuele data, zoals weersinvloeden, feestdagen en lokale evenementen, de nauwkeurigheid significant verbetert ten opzichte van modellen die enkel historische verkoopdata gebruiken.
 
-\begin{figure}
-  \centering
-  \includegraphics[width=0.8\textwidth]{grail.jpg}
-  \caption[Voorbeeld figuur.]{\label{fig:grail}Voorbeeld van invoegen van een figuur. Zorg altijd voor een uitgebreid bijschrift dat de figuur volledig beschrijft zonder in de tekst te moeten gaan zoeken. Vergeet ook je bronvermelding niet!}
-\end{figure}
+\cite{Easter2024} benadrukt dat de preprocessing van data cruciaal is voor modelprestaties. Het smoothing van tijdsreeksen vermindert de impact van outliers en volatiliteit, wat zowel traditionele als moderne modellen ten goede komt. Voor bakkerijen is deze combinatie van zorgvuldige data-voorbereiding en contextuele variabelen essentieel om robuuste voorspellingen te bekomen.
 
-\begin{listing}
-  \begin{minted}{python}
-    import pandas as pd
-    import seaborn as sns
+\subsection*{3. Van voorspelling naar personeelsplanning}
+\cite{Geboers2012} beschrijft in zijn case study hoe verkoopvoorspellingen kunnen worden vertaald naar productieplanning. Voor personeelsplanning vereist dit het definiëren van capaciteitsregels: hoeveel klanten kan één medewerker per tijdseenheid bedienen, wat is de minimale bezetting ongeacht voorspelde drukte, en welke buffer is nodig voor onzekerheid?
 
-    penguins = sns.load_dataset('penguins')
-    sns.relplot(data=penguins, x="flipper_length_mm", y="bill_length_mm", hue="species")
-  \end{minted}
-  \caption[Voorbeeld codefragment]{Voorbeeld van het invoegen van een codefragment.}
-\end{listing}
+\cite{Subekti2025} demonstreert dat convolutionele neurale netwerken uurbasis voorspellingen kunnen maken voor individuele bakkerijproducten. Detailniveau maakt een nauwkeurigere personeelsplanning mogelijk door verkoopvolumes per tijdsblok direct om te zetten naar arbeidsbehoefte. Dergelijke benaderingen creëren een coherente keten van data naar operationele beslissingen.
 
-\lipsum[7-20]
+\subsection*{4. Conclusie}
+De literatuur toont consistent aan dat ensemble-methoden zoals Random Forest, Gradient Boosting en XGBoost significant beter presteren dan traditionele lineaire modellen voor het voorspellen van verkoop. Deep learning-technieken zoals convolutionele neurale netwerken bieden aanvullende mogelijkheden voor fijnmazige, uurbasis voorspellingen.
 
-\begin{table}
-  \centering
-  \begin{tabular}{lcr}
-    \toprule
-    \textbf{Kolom 1} & \textbf{Kolom 2} & \textbf{Kolom 3} \\
-    $\alpha$         & $\beta$          & $\gamma$         \\
-    \midrule
-    A                & 10.230           & a                \\
-    B                & 45.678           & b                \\
-    C                & 99.987           & c                \\
-    \bottomrule
-  \end{tabular}
-  \caption[Voorbeeld tabel]{\label{tab:example}Voorbeeld van een tabel.}
-\end{table}
+Voor bakkerijen is het integreren van zowel operationele data als contextuele data cruciaal voor een nauwkeurige voorspelling. Een zorgvuldige data-preprocessing versterkt deze effecten verder. De combinatie van deze data en machine-learningmodellen stelt kleine ondernemingen in staat om de personeelsplanning te optimaliseren.
 
+De uitdaging ligt in het praktisch implementeren van deze technologieën. Een proof-of-concept moet niet alleen robuust zijn, maar ook praktisch toepasbaar en gebruiksvriendelijk voor de eindgebruiker.

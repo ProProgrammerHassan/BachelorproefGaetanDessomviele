@@ -26,5 +26,65 @@
 %% Maak voor elke fase (behalve het literatuuronderzoek) een NIEUW HOOFDSTUK aan
 %% en geef het een gepaste titel.
 
-\lipsum[21-25]
+In dit hoofdstuk wordt het plan van aanpak van deze bachelorproef toegelicht. Het onderzoek wordt opgedeeld in vier iteratieve fasen: (1) literatuurstudie, (2) data-verzameling en -voorbereiding, (3) experimenten met machine-learningmodellen en (4) ontwikkeling van een proof-of-concept. Elke fase heeft een duidelijke doelstelling, concrete deliverables en bijhorende onderzoeksmethoden. De gekozen aanpak laat toe om stapsgewijs tot een onderbouwde oplossing te komen en tussentijdse inzichten te integreren in latere fasen.
+
+\section{Fase 1: Literatuurstudie}
+
+De eerste fase bestaat uit een gerichte literatuurstudie naar verkoopvoorspelling, machine-learningmodellen voor regressie en de vertaalslag van voorspellingen naar personeelsplanning. Het doel van deze fase is om inzicht te krijgen in bestaande technieken, performantiemetrics en relevante variabelen binnen een retailcontext.
+
+De literatuur wordt verzameld via academische databanken en wetenschappelijke publicaties. Hierbij wordt specifiek aandacht besteed aan het vergelijken van traditionele regressiemodellen met ensemble-methoden zoals Random Forest en Gradient Boosting.
+
+\textbf{Doelstelling:} Identificeren van geschikte modellen en relevante data-elementen voor de casus.  
+
+\textbf{Deliverable:} Overzicht van geselecteerde machine-learningmodellen en een onderbouwde motivatie voor hun keuze.
+
+Deze fase vormt de theoretische basis voor de verdere praktische uitwerking.
+
+\section{Fase 2: Data-verzameling en -voorbereiding}
+
+In de tweede fase wordt operationele en contextuele data verzameld bij Bakkerij Bossu. Operationele data omvat onder andere historische verkoopcijfers en openingstijden. Contextuele data omvat variabelen zoals weekends, feestdagen en seizoensinvloeden.
+
+De verzamelde data wordt opgeschoond, geanalyseerd en voorbereid voor modellering. Dit omvat onder meer:
+\begin{itemize}
+    \item controle op ontbrekende of foutieve waarden,
+    \item identificatie van trends en seizoenspatronen,
+    \item selectie van relevante variabelen,
+    \item eventuele feature engineering.
+\end{itemize}
+
+De analyse wordt uitgevoerd in Python met behulp van Pandas voor dataverwerking en Matplotlib voor visualisaties.
+
+\textbf{Doelstelling:} Creëren van een kwalitatieve en bruikbare dataset voor modeltraining.  
+
+\textbf{Deliverable:} Voorbereide dataset en een beschrijving van de uitgevoerde data-analyse.
+
+Deze fase is cruciaal om betrouwbare modellen te kunnen trainen.
+
+\section{Fase 3: Experimenten met machine-learningmodellen}
+
+In deze fase worden verschillende machine-learningmodellen geselecteerd, getraind en geëvalueerd op basis van de voorbereide dataset. Zowel traditionele regressiemodellen als ensemble-methoden worden getest.
+
+De dataset wordt opgesplitst in een trainings- en testset, waarbij rekening wordt gehouden met de temporele aard van de data. De prestaties van de modellen worden geëvalueerd aan de hand van objectieve metrics zoals RMSE en MAE.
+
+Op basis van de resultaten worden hyperparameters geoptimaliseerd en worden modellen iteratief verbeterd.
+
+\textbf{Doelstelling:} Identificeren van het model dat de meest nauwkeurige verkoopvoorspellingen genereert.  
+
+\textbf{Deliverable:} Vergelijkend rapport van modelprestaties en selectie van het best presterende model.
+
+Deze vergelijkende aanpak zorgt voor een onderbouwde modelkeuze.
+
+\section{Fase 4: Ontwikkeling van een proof-of-concept}
+
+In de laatste fase wordt een proof-of-concept ontwikkeld dat de voorspelde verkoopcijfers vertaalt naar een berekening van de benodigde personeelsbezetting.
+
+Hiervoor worden vooraf capaciteitsregels gedefinieerd, zoals het aantal klanten of producten dat één medewerker per tijdseenheid kan verwerken, en een minimale bezettingsgraad. Op basis van deze regels wordt een berekening gemaakt van het benodigde aantal medewerkers per periode.
+
+Het proof-of-concept wordt ontwikkeld in Python en focust op functionaliteit en bruikbaarheid voor de zaakvoerder.
+
+\textbf{Doelstelling:} Ontwikkelen van een werkend prototype dat verkoopvoorspellingen omzet in personeelsbehoefte.  
+
+\textbf{Deliverable:} Werkend proof-of-concept en documentatie van de werking.
+
+Deze iteratieve aanpak — van literatuurstudie tot implementatie — is gekozen om zowel academische onderbouwing als praktische toepasbaarheid te garanderen. Door eerst theoretisch geschikte modellen te identificeren en deze vervolgens empirisch te testen op reële data, wordt een robuuste en gefundeerde oplossing ontwikkeld.
 

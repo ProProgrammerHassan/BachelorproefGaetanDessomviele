@@ -24,6 +24,8 @@
 \def\@classname{hogentreport}
 \ProvidesClass{hogentreport}[2022/06/20 Hogeschool Gent report/thesis class]
 
+\newif\if@nativefonts  % ← definieer de boolean vóór gebruik
+
 \RequirePackage{xkeyval}
 \RequirePackage{iflang}
 
@@ -336,7 +338,7 @@
         not running XeLaTeX/LuaLaTeX: using native fonts}
 
     \RequirePackage[defaultfam,tabular,lining]{montserrat}
-    \RequirePackage{firamath}
+    % \RequirePackage{firamath}
     \RequirePackage{sfmath} % Fallback sans serif math font
 
     \RequirePackage[T1]{fontenc}
