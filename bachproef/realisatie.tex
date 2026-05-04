@@ -1,0 +1,36 @@
+\chapter{Realisatie en uitwerking}
+\label{ch:realisatie}
+
+In dit hoofdstuk wordt de praktische realisatie van het onderzoek toegelicht. Waar de voorgaande hoofdstukken de theoretische basis en de methodologische aanpak hebben vastgelegd, focust dit hoofdstuk op de effectieve ontwikkeling van het beslissingsondersteunend instrument. De realisatie resulteerde in een interactief dashboard dat fungeert als een \textit{Proof-of-Concept} (PoC) voor datagedreven personeelsplanning.
+
+\section{Technische architectuur en data-pijplijn}
+\label{sec:architectuur}
+
+De applicatie is ontwikkeld in de programmeertaal Python, waarbij gebruik is gemaakt van het Streamlit-framework voor de interface. De architectuur volgt een gelaagde aanpak om de schaalbaarheid en onderhoudbaarheid van het systeem te garanderen:
+
+\begin{itemize}
+    \item \textbf{Data-integratie:} Historische verkoopcijfers worden gecombineerd met contextuele variabelen zoals feestdagen en wekelijkse sluitingsdagen. \cite{Geboers2012} toont aan dat het toevoegen van dergelijke contextuele data de nauwkeurigheid van voorspellingen in de broodindustrie significant verbetert.
+    \item \textbf{Modellogiek:} De kern van het systeem bevat getrainde ensemble-modellen. Volgens \cite{GangulyMukherjee2024} en \cite{Kang2023} presteren modellen zoals Random Forest en Gradient Boosting aanzienlijk beter dan traditionele lineaire modellen bij het modelleren van retailverkooppatronen.
+    \item \textbf{Prescriptieve laag:} Een algoritme vertaalt de ruwe verkoopvoorspelling naar een personeelsadvies. \cite{Geboers2012} benadrukt dat deze vertaalslag essentieel is om voorspellingen operationeel inzetbaar te maken.
+\end{itemize}
+
+\section{Operationele planning en personeelsbezetting}
+\label{sec:planning}
+
+De eerste module van het dashboard richt zich op de dagelijkse planning. Hierin wordt een verkoopvoorspelling gegenereerd die direct wordt gekoppeld aan de personeelsbehoefte.
+
+\begin{itemize}
+    \item \textbf{Capaciteitsregels:} Om de voorspelling te vertalen naar personeel, zijn capaciteitsregels gedefinieerd. \cite{Geboers2012} beschrijft dat dit vereist dat men vastlegt hoeveel klanten of producten één medewerker per tijdseenheid kan verwerken.
+    \item \textbf{Human-in-the-loop:} Via een interactieve slider kan de gebruiker de productiviteitsfactor aanpassen. Dit waarborgt dat de expertise van de bakker behouden blijft, een aspect dat \cite{Subekti2025} aanhaalt als cruciaal voor de praktische bruikbaarheid van intelligente voorspellingssystemen in bakkerijen.
+\end{itemize}
+
+\section{Modelvalidatie en performance analyse}
+\label{sec:performance}
+
+De tweede module biedt een technisch overzicht van de modelprestaties, wat essentieel is voor de wetenschappelijke onderbouwing van het prototype.
+
+\begin{itemize}
+    \item \textbf{Vergelijking van modellen:} In lijn met de bevindingen van \cite{Easter2024} wordt XGBoost ingezet vanwege de robuuste prestaties bij dagelijkse bakkerijvraagvoorspellingen in vergelijking met klassieke tijdreeksmodellen.
+    \item \textbf{Evaluatiemetrics:} De nauwkeurigheid wordt gekwantificeerd middels de \textit{Mean Absolute Error} (MAE) en \textit{Root Mean Square Error} (RMSE). Deze metrics worden door zowel \cite{GangulyMukherjee2024} als \cite{Easter2024} gehanteerd als de standaard voor het evalueren van retail-forecastingsmodellen.
+    \item \textbf{Interpretatie van voorspellingsfouten:} De analyse van de BIAS in de voorspellingen stelt de gebruiker in staat om te beoordelen of het model structureel over- of onderschat, wat volgens \cite{Geboers2012} direct van invloed is op de ordering en planning in de bakkerijsector.
+\end{itemize}
