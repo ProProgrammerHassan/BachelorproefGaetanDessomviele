@@ -5,52 +5,95 @@
 % andere student?
 % Zo ja, haal dan de tekst hieronder uit commentaar en pas aan.
 
-\paragraph{Opmerking}
-
-Dit voorstel is gebaseerd op het onderzoeksvoorstel dat werd geschreven in het
-kader van het vak Research Methods dat ik vorig academiejaar heb
-uitgewerkt met medesturent Yu-lan Heremans als mede-auteur.
- 
 
 \section{Inleiding}%
 \label{sec:inleiding}
 
-\textcolor{blue}{Het correct inschatten van het nodige personeel is een cruciale uitdaging voor kleine detailhandelaars zoals Bakkerij Bossu in Nazareth. Onvoldoende personeel kan leiden tot overbelasting van het team en tot lange wachttijden, die al snel invloed kunnen hebben op de klanttevredenheid, terwijl te veel personeel onnodige kosten veroorzaakt. Voor bakkers is het dus essentieel om de personeelsplanning efficiënt en nauwkeurig toe te passen.}
+Het Zorglab van HOGENT is een geavanceerde simulatieomgeving waarin studenten gezondheidszorg en onderzoekers praktijksituaties oefenen en analyseren. Om leerprocessen te ondersteunen en onderzoeksdata te verzamelen, wordt er uitgebreid gebruikgemaakt van video- recordings. De huidige technische opzet steunt op apparatuur en software zoals Noldus VISO, gecombineerd met Axis-camera’s en Microsoft Teams.
 
-Om dit probleem aan te pakken, focust deze bachelorproef zich op het gebruik van operationele en contextuele data in combinatie met mach\-ine-learningmodellen om de personeelsbehoefte van een bakkerij aan te tonen op basis van voorspelde verkoopcijfers. De kern van dit onderzoek is dat nauwkeurige verkoopvoorspellingen de bakker in staat stellen om optimaal personeel in te plannen, waardoor zowel de kosten als de klanttevredenheid gemaximaliseerd worden.
+Deze werkwijze brengt echter belangrijke uitdagingen met zich mee. Ten eerste zorgen de hoogwaardige videobestanden voor snelgroeiende datavolumes, wat druk legt op de lokale opslaginfrastructuur en de beheerskosten verhoogt. Ten tweede – en dat is het voornaamste knelpunt – zijn videobeelden van studenten en simulanten aan te merken als gevoelige persoonsgegevens. Onder de Algemene Verordening Gegevensbescherming (AVG/GDPR) geldt een streng juridisch kader rond opslaglocaties, toegangsbeheer, bewaartermijnen en het expliciete onderscheid tussen onderwijsdata (tijdelijk) en onderzoeksdata (langduriger, met specifieke toestemming).
 
-De onderzoeksvraag luidt: \textcolor{blue}{ “Hoe kunnen operationele en contextuele data van bakkers in combinatie met machine-learningmodellen worden ingezet om de benodigde hoeveelheid personeel te bepalen op basis van verkoopvoorspellingen?”}
+Bovendien mag niet zomaar alle data onbeperkt worden opgeslagen: het principe van dataminimalisatie vereist dat beelden kritisch worden gefilterd en dat overbodige of niet-relevante opnames niet doorstromen naar langdurige opslag.
 
-Om deze centrale vraag correct te kunnen beantwoorden, worden enkele deelvragen onderzocht. Om de datastructuur te begrijpen, is het interessant om de deelvraag: \textcolor{blue}{ “Hoe sterk variëren de verkoopvolumes tijdens weekends en feestdagen?”} te onderzoeken. Een andere belangrijke deelvraag richt zich op de keuze van het AI-model: \textcolor{blue}{welk machine-learningmodel kan de verkoop het nauwkeurigst voorspellen en daarmee de planning optimaliseren?} Ook de keuze van de te gebruiken data is essentieel voor de voorspelling. \textcolor{blue}{Welke operationele en contextuele data zijn relevant om betrouwbare voorspellingen te maken?} Deze deelvraag houdt hier rekening mee.
+\subsection{Doelstelling \& Relevantie}%
+\label{subsec:doelstelling}
 
-De doelstelling van deze bachelorproef is het ontwikkelen van een proof-of-concept voorspellingsmodel dat Bakkerij Bossu ondersteunt bij het plannen van personeel op basis van verkoopvoorspellingen. Daarnaast wordt een kort adviesrapport opgesteld met aanbevelingen voor de planning.
+Het doel van deze bachelorproef is het ontwerpen en demonstreren van een veilige, geautomatiseerde en kostenefficiënte cloudarchitectuur op Microsoft Azure. Door gebruik te maken van Azure Blob Storage Tiers en geautomatiseerde opslag- en opschoonregels wordt een oplossing geboden die voldoet aan de strenge privacy-eisen en de opslagkosten formuleert naar daadwerkelijk gebruik.
 
+\subsection{Onderzoeksvragen}%
+\label{subsec:onderzoeksvragen}
+
+De hoofdonderzoeksvraag luidt: 
+“Hoe kan een kostenefficiënte en GDPR-conforme cloudarchitectuur op Microsoft Azure worden ontworpen en als Proof of Concept worden uitgewerkt voor de opslag van Zorglab-simulatiedata, rekening houdend met dataminimalisatie en regelgebaseerde filtering?”
+
+Om deze centrale hoofdvraag te beantwoorden, worden de volgende deelvragen onderzocht:
+
+\subsubsection*{Deelvragen Probleemdomein}
+\begin{enumerate}
+    \item \textbf{Huidige praktijk \& brondata:} Wat is de huidige operationele workflow en technische opzet van de videorecordings in het Zorglab HOGENT, en welke datavolumes, formaten en technische knelpunten brengt dit met zich mee?
+    \item \textbf{Privacy \& GDPR:} Welke wettelijke en ethische privacyverplichtingen gelden er voor de verwerking van videobeelden van studenten en simulanten?
+    \item \textbf{Kritische dataminimalisatie:} Hoe kan het principe van dataminimalisatie kritisch worden toegepast om te bepalen welke videodata effectief in aanmerking komt voor verdere verwerking, en welke data omwille van privacy, beperkte meerwaarde of overbodigheid beter niet naar de cloud wordt doorgestuurd?
+\end{enumerate}
+
+\subsubsection*{Deelvragen Oplossingsdomein}
+\begin{enumerate}
+    \setcounter{enumi}{3}
+    \item \textbf{Cloudarchitectuur:} Hoe kan een kostenefficiënte en schaalbare cloudarchitectuur op Microsoft Azure worden ontworpen, om de geselecteerde videodata van het Zorglab op te slaan?
+    \item \textbf{Automatisering \& PoC:} Hoe kunnen geautomatiseerde opslag- en opschoonregels op Microsoft Azure worden ingesteld om de bewaartermijnen van de videodata GDPR-compliant te beheren binnen een Proof of Concept?
+\end{enumerate}
+
+\subsection{Scope van de Proof of Concept (PoC)}%
+\label{subsec:scope}
+
+Om de haalbaarheid van het onderzoek te bewaken, richt de praktische uitwerking (PoC) zich op:
+\begin{itemize}
+    \item \textbf{In scope:} Het opzetten van een Azure Resource Group, Blob Storage Accounts met verschillende storage tiers, het toepassen van metadata-tagging en het configureren van geautomatiseerde Lifecycle Management rules voor transitie en verwijdering van test-videobestanden.
+    \item \textbf{Out of scope:} Het ontwikkelen van complexe AI-modellen voor automatische video-analyse of de volledige fysieke herinrichting van het netwerk in het Zorglab.
+\end{itemize}
 
 %---------- Stand van zaken ---------------------------------------------------
 
 \section{Literatuurstudie}%
 \label{sec:literatuurstudie}
 
-De inzet van artificiële intelligentie en dataengineering in personeelsplanning krijgt steeds meer aandacht, vooral binnen sectoren waar de behoefte aan personeel sterk fluctueert. Deze literatuurstudie bespreekt relevante inzichten en identificeert de belangrijkste uitdagingen, maar ook de opportuniteiten voor het gebruik van AI binnen personeelsplanning, met specifieke aandacht voor de bakkerij-industrie.
+\subsection{Probleemdomein}%
+\label{subsec:lit_probleemdomein}
 
-\subsection*{1. Vergelijken modelprestaties}
-De literatuur toont een duidelijk onderscheid in prestaties tussen traditionele lineaire modellen en moderne ensemble-methoden. \cite{GangulyMukherjee2024} vergeleek verschillende machine-learningmodellen voor retailverkoopvoorspelling en stelde concrete verschillen vast in prestatie: Random Forest behaalde een R² van 0.945 met een RMSE van 282.07, terwijl lineaire regressie slechts een R² van 0.531 bereikte. Deze resultaten tonen aan dat ensemble-methoden aanzienlijk sterker presteren bij het modelleren van verkooppatronen.  
+\subsubsection{Technische opzet en datastromen in de simulatiepraktijk}
+In moderne medische simulatie-omgevingen -- en bij uitbreiding ook binnen het Zorglab van HOGENT -- wordt gebruikgemaakt van geavanceerde audio- en videosystemen om praktijkoefeningen vast te leggen voor debriefing en evaluatie \parencite{CHSU2023}. De technische opzet combineert vaak softwareoplossingen zoals Noldus VISO met IP-camera's (zoals Axis) en samenwerkingsplatformen zoals Microsoft Teams.
 
-Gradient Boosting behoort ook tot de best presterende modellen. \cite{GangulyMukherjee2024} rapporteert een R² van 0.942, terwijl \cite{Kang2023} aantoont dat Gradient Boosting in hun studie marginaal beter presteerde dan Random Forest. Deze consistente prestaties op verschillende datasets wijzen erop dat ensemble-methoden geschikt zijn voor het voorspellen van retailverkopen.
+Het voornaamste technische knelpunt bij deze opzet is de generatie van omvangrijke videodata. Hoge resoluties en multi-camerahoeken leiden tot een exponentiële groei van datavolumes op lokale opslagmedia. Zonder geautomatiseerd beheer of tijdig opschonen ontstaan er al snel knelpunten rond opslagcapaciteit, bandbreedte en beheerskosten.
 
-\subsection*{2. Rol van operationele en contextuele data}
-\cite{Geboers2012} onderzocht in zijn case study bij Bakkersland B.V. de impact van contextuele variabelen op verkoopvoorspellingen voor de broodindustrie. Het concludeert dat het toevoegen van contextuele data, zoals weersinvloeden, feestdagen en lokale evenementen, de nauwkeurigheid significant verbetert ten opzichte van modellen die enkel historische verkoopdata gebruiken.
+\subsubsection{Juridisch en ethisch kader rond videodata van studenten}
+Videobeelden waarop studenten of simulanten herkenbaar in beeld gebracht worden, vallen onder de definitie van persoonsgegevens conform de Algemene Verordening Gegevensbescherming (AVG/GDPR) \parencite{Sensors2025}. Hierdoor geldt een strikt juridisch en ethisch kader voor de verwerking en opslag van deze data.
 
-\subsection*{3. Van voorspelling naar personeelsplanning}
-\cite{Geboers2012} beschrijft in zijn case study hoe verkoopvoorspellingen kunnen worden vertaald naar productieplanning. Voor personeelsplanning vereist dit het definiëren van capaciteitsregels: hoeveel klanten kan één medewerker per tijdseenheid bedienen, wat is de minimale bezetting ongeacht voorspelde drukte, en welke buffer is nodig voor onzekerheid?
+Belangrijke verplichtingen binnen dit kader omvatten:
+\begin{itemize}
+    \item \textbf{Verwerkingsgrondslag en transparantie:} Het expliciet informeren van betrokkenen en het vastleggen van een correcte juridische basis voor verwerking \parencite{Chassang2017}.
+    \item \textbf{Datasecuriteit en opslaglocatie:} Binnen de Europese Unie moet gegarandeerd worden dat persoonsgegevens worden opgeslagen binnen conforme datacenters met adequate toegangsbeveiliging \parencite{Sensors2025}.
+    \item \textbf{Onderscheid onderwijs- versus onderzoeksdata:} Videobeelden die puur dienen voor onderwijsevaluaties (debriefing) kennen een korte bewaartermijn. Beelden die worden ingezet voor wetenschappelijk onderzoek vereisen specifieke toestemming en mogen onder strengere voorwaarden langer bewaard worden \parencite{CHSU2023}.
+\end{itemize}
 
-\subsection*{4. Conclusie}
-De literatuur toont consistent aan dat ensemble-methoden zoals Random Forest en Gradient Boosting significant beter presteren dan traditionele lineaire modellen voor het voorspellen van verkoop.  
+\subsubsection{Toepassing van dataminimalisatie en selectiecriteria}
+Het AVG-principe van dataminimalisatie eist dat niet meer gegevens worden verwerkt en bewaard dan strikt noodzakelijk is voor het vooropgestelde doel \parencite{Chassang2017}. In een videorecording-context betekent dit dat niet alle gemaakte opnames onbeperkt naar een centrale opslag of de cloud mogen doorstromen.
 
-Voor bakkerijen is het integreren van zowel operationele data als contextuele data cruciaal voor een nauwkeurige voorspelling. De combinatie van deze data en machine-learningmodellen stelt kleine ondernemingen in staat om de personeelsplanning te optimaliseren.  
+Door het instellen van kritische filtercriteria – gebaseerd op metadata zoals het type sessie, de geldigheid van toestemmingsformulieren of de relevantie voor onderzoek – kan aan de bron bepaald worden welke data in aanmerking komt voor opslag en welke data omwille van privacy, beperkte meerwaarde of overbodigheid beter niet naar de cloud wordt doorgestuurd \parencite{CHSU2023}.
 
-De uitdaging ligt in het praktisch implementeren van deze technologieën. Een proof-of-concept moet niet alleen robuust zijn, maar ook praktisch toepasbaar en gebruiksvriendelijk voor de eindgebruiker.
+\subsection{Oplossingsdomein}%
+\label{subsec:lit_oplossingsdomein}
 
+\subsubsection{Cloudarchitectuur en kostenefficiënte opslag op Microsoft Azure}
+Om de uitdagingen rond datagroei en veilige opslag op te lossen, biedt een cloudarchitectuur gebaseerd op Microsoft Azure uitkomst \parencite{AzureWellArchitected2026}. Binnen Azure Blob Storage kunnen gegevens kostenefficiënt georganiseerd worden door gebruik te maken van verschillende opslaglagen (\emph{storage tiers}) \parencite{AzureLifecycle2026}:
+\begin{itemize}
+    \item \textbf{Hot Tier:} Geoptimaliseerd voor data die frequent geraadpleegd wordt \parencite{AzureLifecycle2026}.
+    \item \textbf{Cool Tier:} Geschikt voor data die minder vaak geraadpleegd wordt, maar wel direct beschikbaar moet zijn \parencite{AzureLifecycle2026}.
+    \item \textbf{Cold / Archive Tier:} Voor langdurige archivering van onderzoeksdata tegen zeer lage opslagkosten \parencite{AzureWellArchitected2026}.
+\end{itemize}
+
+\subsubsection{Geautomatiseerd Lifecycle Management en regelgebaseerde opschoning}
+Het handmatig beheren en verwijderen van videobestanden is foutgevoelig en tijdsintensief. Microsoft Azure biedt hiervoor \emph{Lifecycle Management rules} \parencite{AzureLifecycle2026}. Dit zijn geautomatiseerde, regelgebaseerde beleidsregels die op basis van paden, containerbronnen of specifieke metadata-tags acties uitvoeren.
+
+Via deze regels worden bestanden na het verstrijken van de vastgelegde bewaartermijn automatisch getransfereerd naar een goedkopere opslaglaag of definitief verwijderd \parencite{AzureLifecycle2026}. Dit garandeert dat bewaartermijnen GDPR-compliant worden afgedwongen zonder menselijke tussenkomst \parencite{AzureWellArchitected2026}.
 
 % Voor literatuurverwijzingen zijn er twee belangrijke commando's:
 % \autocite{KEY} => (Auteur, jaartal) Gebruik dit als de naam van de auteur
@@ -63,26 +106,25 @@ De uitdaging ligt in het praktisch implementeren van deze technologieën. Een pr
 \section{Methodologie}%
 \label{sec:methodologie}
 
-Het doel van deze bachelorproef is het ontwikkelen van een proof-of-concept dat bakkerij Bossu ondersteunt bij het plannen van zijn personeel. Om de onderzoeksvraag te beantwoorden, wordt het onderzoek opgedeeld in onderstaande iteratieve fasen, die elkaar overlappen en iteratieve verbeteringen toelaten.
+Om de hoofdonderzoeksvraag te beantwoorden en tot een kostenefficiënte, GDPR-conforme cloudarchitectuur te komen, wordt een praktijkgericht onderzoek uitgevoerd. De methodologie volgt vier iteratieve fasen:
 
-\paragraph{Fase 1: Literatuurstudie}
-Deze fase omvat een grondige analyse van literatuur over machine-lea\-rningmodellen voor verkoopvoorspellingen, personeelsplanning in kleine ondernemingen en het gebruik van operationele en contextuele data. Het doel is het selecteren van geschikte modellen voor de casus van bakkerij Bossu, en er kennis over opdoen om deze correct toe te passen op de verzamelde data. Maar ook vaststellen welke soorten data invloed zullen hebben op de verkoop. De deliverable van deze fase is een overzicht dat de selectiecriteria voor machine-learningmodellen en de relevante data-elementen beschrijft. Dit stadium wordt gepland om twee weken in beslag te nemen en dient als basis voor alle verdere fasen.
+\subsection{Fase 1: Analyse van het privacykader}
+In de eerste fase wordt een grondige analyse uitgevoerd van de wettelijke en ethische randvoorwaarden. Hierbij staan de AVG/GDPR, de vereisten rond EU-datalocatie en de specifieke richtlijnen van de Data Protection Officer (DPO) centraal om de eisen rond bewaartermijnen, toegangsbeheer en datasecuriteit vast te leggen.
 
-\paragraph{Fase 2: Data-verzameling en -voorbereiding}
-Deze stap richt zich op het verzamelen en voorbereiden van operationele en contextuele data bij bakkerij Bossu. Deze data wordt verzameld uit de winkel van Bossu. Hiertoe behoren verkoopcijfers, openingstijden, seizoen, feestdagen en eventuele lokale evenementen. De data wordt geanalyseerd om trends en correlaties te identificeren zodat de meest rendabele variabelen overblijven. Deze data-analyse wordt uitgevoerd op een Pandas-dataframe en gevisualiseerd via matplotlib. De overblijvende dataset na deze analyse is de deliverable. Dit staat gepland om twee weken in te nemen.
+\subsection{Fase 2: In kaart brengen van de huidige datastromen}
+Vervolgens worden de bestaande operationele workflows binnen het Zorglab geanalyseerd. De datastromen afkomstig van Noldus VISO, Axis-camera's en Microsoft Teams worden gedocumenteerd om inzicht te krijgen in de gegenereerde datavolumes, bestandsformaten en technische knelpunten rond de huidige opslag.
 
-\paragraph{Fase 3: Experimenten met machine-learningmodellen}
-Op basis van de literatuurstudie en data-analyse worden meerdere machine-learnin\-gmodellen geselecteerd waaronder verschillende regressiemodellen en random forests. Deze modellen worden getraind en getest op de verzamelde data om de nauwkeurigheid te kunnen evalueren. Deze evaluatie verloopt aan de hand van objectieve metrics zoals RMSE en MAE. Daarna worden er iteratieve verbeteringen doorgevoerd door de hyperparameters aan te passen en de modellen opnieuw te trainen. De deliverable van deze fase is een rapport waarin de prestaties van de verschillende modellen worden vergeleken en het meest geschikte model voor de casus wordt gekozen. De planning voor deze fase bedraagt drie weken.
+\subsection{Fase 3: Bepalen van regelgebaseerde filterregels}
+In deze fase worden de criteria voor dataminimalisatie en opslagbeheer gedefinieerd. Op basis van metadata wordt vastgelegd welke data naar de cloud doorstroomt en hoe deze efficiënt wordt verdeeld over de verschillende Azure-opslaglagen.
 
-\paragraph{Fase 4: Proof-of-concept ontwikkeling}
-In fase 4 wordt een proof-of-concept ontwikkeld dat de voorspelde verkoopcijfers omzet naar een berekening van de benodigde personeelsleden. Het prototype richt zich niet op de volledige personeelsplanning, zo is er nog ruimte voor de bakker voor eigen invloeden. Er worden op voorhand capaciteitsregels gedefinieerd, zoals het aantal producten dat één medewerker per tijdseenheid kan verwerken. Op basis van deze regels wordt voorspeld hoeveel werknemers nodig zullen zijn. Dit kan de bakker dan meenemen in zijn planning en zelf werknemers inplannen voor deze hoeveelheden. Het werkende proof-of-concept is de deliverable voor deze fase en deze zal drie weken in beslag nemen.
+\subsection{Fase 4: Ontwikkeling van de Proof of Concept}
+Tot slot wordt het ontworpen model in de praktijk gebracht en getest binnen Microsoft Azure. In deze fase worden de Azure Resource Groups, Blob Storage Accounts, metadata-tagging en geautomatiseerde geconfigureerd en gevalideerd met test-videobestanden.
 
 
 %---------- Verwachte resultaten ----------------------------------------------
 \section{Verwacht resultaat, conclusie}
 \label{sec:verwachte_resultaten}
 
-In dit onderzoek wordt verwacht dat één van de geteste machine-learningmodellen duidelijk de beste prestaties zal leveren voor het voorspellen van de verkoop bij Bakkerij Bossu.
-Op basis van de literatuur wordt verwacht dat het voorspellen van de verkopen accuraat kan worden uitgevoerd. Daarnaast suggereren meerdere studies dat lineaire modellen doorgaans minder goed presteren in een retailcontext, terwijl modellen zoals Random Forest en Gradient Boosting vaak tot de best scorende behoren \cite{GangulyMukherjee2024, Kang2023}. Daarom wordt verwacht dat ook in deze casus een ensemble-model de hoogste nauwkeurigheid zal behalen.
+Het hoofddoel van deze bachelorproef is het opleveren van een theoretisch en praktisch onderbouwd kader voor de geautomatiseerde, veilige en kostenefficiënte opslag van Zorglab-simulatiedata op Microsoft Azure. Dit resulteert in een analyse van de wettelijke randvoorwaarden gekoppeld aan de huidige datastromen, een regelgebaseerd filtermodel op basis van metadata, en een geteste Proof of Concept op Azure met geconfigureerde.
 
-Hoewel deze verwachtingen gebaseerd zijn op bestaande literatuur, blijft het mogelijk dat de resultaten afwijken. Indien een model minder goed presteert dan verwacht, zal worden onderzocht welke factoren bijdragen aan deze overschatting.
+Hiermee verkrijgt het Zorglab een schaalbaar en toekomstbestendig fundament. De automatische afdwinging van bewaartermijnen en de tijdige migratie naar goedkopere opslaglagen waarborgen de strikte naleving van de privacywetgeving en reduceren de opslagkosten tot het daadwerkelijke gebruik.
