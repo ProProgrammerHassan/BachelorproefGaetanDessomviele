@@ -7,26 +7,51 @@
 
 % Pas na deze inleidende paragraaf komt de eerste sectiehoofding.
 
-Dit hoofdstuk bouwt verder op de inleiding en verdiept zich in de bestaande literatuur rond verkoopvoorspelling en datagedreven personeelsplanning. Waar in het vorige hoofdstuk het probleem en de onderzoeksvragen werden gedefinieerd, wordt hier het wetenschappelijke kader geschetst waarbinnen deze bachelorproef zich situeert. Het doel is om inzicht te geven in de huidige stand van zaken binnen het domein van retail forecasting en machine learning, zodat de gemaakte methodologische keuzes in het volgende hoofdstuk onderbouwd zijn.
+Dit hoofdstuk borduurt voort op de inleiding en duikt dieper in de bestaande literatuur en technische kaders die cruciaal zijn voor deze bachelorproef. Waar we in het vorige hoofdstuk het probleem binnen het Zorglab van HOGENT en de onderzoeksvragen hebben geschetst, bekijken we hier het bredere plaatje: hoe wordt dit soort vraagstukken vandaag de dag aangepakt, zowel op vlak van technologie als wetgeving? Het doel is om een stevig fundament te leggen, zodat de keuzes die we straks in onze methodologie en Proof of Concept maken niet uit de lucht gegrepen zijn.
 
-\subsection*{1. Vergelijken modelprestaties}
-De literatuur toont een duidelijk onderscheid in prestaties tussen traditionele lineaire modellen en moderne ensemble-methoden. \cite{GangulyMukherjee2024} vergeleek verschillende machine-learningmodellen voor retailverkoopvoorspelling en stelde concrete verschillen vast in prestatie: Random Forest behaalde een R² van 0.945 met een RMSE van 282.07, terwijl lineaire regressie slechts een R² van 0.531 bereikte. Deze resultaten tonen aan dat ensemble-methoden aanzienlijk sterker presteren bij het modelleren van verkooppatronen.
+\section{Probleemdomein}%
+\label{subsec:lit_probleemdomein}
 
-Gradient Boosting behoort ook tot de best presterende modellen. \cite{GangulyMukherjee2024} rapporteert een R² van 0.942, terwijl \cite{Kang2023} aantoont dat Gradient Boosting in hun studie marginaal beter presteerde dan Random Forest. Daarnaast toont \cite{Easter2024} aan dat XGBoost robuuster presteert dan klassieke tijdreeksmodellen zoals SARIMA bij dagelijkse bakkerijvraagvoorspellingen, met MAE-waarden tussen 0.0041 en 2.0978 en RMSE-waarden tussen 0.1112 en 3.5450. Deze consistente prestaties op verschillende datasets wijzen erop dat ensemble-methoden geschikt zijn voor het voorspellen van retailverkopen.
+\subsection{Technische opzet en datastromen in de simulatiepraktijk}
+Wie vandaag binnenstapt in moderne medische simulatie-omgevingen – en dus ook in het Zorglab van HOGENT – ziet al snel dat er stevig wat techniek komt kijken bij het vastleggen van oefeningen \parencite{CHSU2023}. Om studenten achteraf goed te kunnen evalueren en debriefen, wordt gewerkt met een combinatie van gespecialiseerde software zoals Noldus VISO, vaste IP-camera's (zoals Axis) en platformen zoals Microsoft Teams.
 
-\subsection*{2. Rol van operationele en contextuele data}
-\cite{Geboers2012} onderzocht in zijn case study bij Bakkersland B.V. de impact van contextuele variabelen op verkoopvoorspellingen voor de broodindustrie. Het concludeert dat het toevoegen van contextuele data, zoals weersinvloeden, feestdagen en lokale evenementen, de nauwkeurigheid significant verbetert ten opzichte van modellen die enkel historische verkoopdata gebruiken.
+Het grote knelpunt in al dat moois? De enorme databergen die zo'n opnames genereren. Omdat je werkt met hoge resoluties en vaak meerdere camera's tegelijk die langere tijd blijven draaien, schiet de lokale opslag op de servers al snel vol. Zonder een slimme manier van beheren of automatisch opruimen loop je tegen harde limieten aan qua opslagruimte, netwerkbandbreedte en bijhorende kosten \parencite{CHSU2023}.
 
-\cite{Easter2024} benadrukt dat de preprocessing van data cruciaal is voor modelprestaties. Het smoothing van tijdsreeksen vermindert de impact van outliers en volatiliteit, wat zowel traditionele als moderne modellen ten goede komt. Voor bakkerijen is deze combinatie van zorgvuldige data-voorbereiding en contextuele variabelen essentieel om robuuste voorspellingen te bekomen.
+\subsection{Juridisch en ethisch kader rond videodata van studenten}
+Zodra je camera's aanzet en studenten, docenten of simulanten duidelijk in beeld brengt, begeef je je meteen op het terrein van de privacy \parencite{Sensors2025}. Videobeelden zijn wettelijk gezien persoonsgegevens, wat betekent dat je je aan strikte regels van de Algemene Verordening Gegevensbescherming (AVG/GDPR) moet houden.
 
-\subsection*{3. Van voorspelling naar personeelsplanning}
-\cite{Geboers2012} beschrijft in zijn case study hoe verkoopvoorspellingen kunnen worden vertaald naar productieplanning. Voor personeelsplanning vereist dit het definiëren van capaciteitsregels: hoeveel klanten kan één medewerker per tijdseenheid bedienen, wat is de minimale bezetting ongeacht voorspelde drukte, en welke buffer is nodig voor onzekerheid?
+In de praktijk betekent dit dat je met een aantal harde randvoorwaarden rekening moet houden:
+\begin{itemize}
+    \item \textbf{Transparantie en toestemming:} Iedereen moet vooraf goed weten wat er met de beelden gebeurt en er moet een duidelijke juridische basis zijn om de data te verwerken \parencite{Chassang2017}.
+    \item \textbf{Veiligheid en locatie:} De data mag niet zomaar ergens op een willekeurige server belanden. Alles moet netjes binnen de Europese Unie blijven, goed beveiligd en versleuteld \parencite{Sensors2025}.
+    \item \textbf{Onderwijs vs. onderzoek:} Er is een groot verschil tussen beelden die enkel dienen voor een snelle debriefing (die hoef je echt niet lang bij te houden) en beelden voor wetenschappelijk onderzoek, waarvoor je expliciete toestemming nodig hebt en strengere regels gelden \parencite{CHSU2023}.
+    \item 
+\end{itemize}
 
-\cite{Subekti2025} demonstreert dat convolutionele neurale netwerken uurbasis voorspellingen kunnen maken voor individuele bakkerijproducten. Detailniveau maakt een nauwkeurigere personeelsplanning mogelijk door verkoopvolumes per tijdsblok direct om te zetten naar arbeidsbehoefte. Dergelijke benaderingen creëren een coherente keten van data naar operationele beslissingen.
+\subsection{Toepassing van dataminimalisatie en selectiecriteria}
+Een belangrijk principe binnen de privacywetgeving is dataminimalisatie: bewaar niet meer data dan absoluut noodzakelijk is \parencite{Chassang2017}. Als je elke opname zomaar blindelings naar een centrale plek of de cloud stuurt, ben je verkeerd bezig.
 
-\subsection*{4. Conclusie}
-De literatuur toont consistent aan dat ensemble-methoden zoals Random Forest, Gradient Boosting en XGBoost significant beter presteren dan traditionele lineaire modellen voor het voorspellen van verkoop. Deep learning-technieken zoals convolutionele neurale netwerken bieden aanvullende mogelijkheden voor fijnmazige, uurbasis voorspellingen.
+Door slimme filters en criteria in te bouwen — bijvoorbeeld op basis van metadata zoals het type sessie, of er wel een getekend toestemmingsformulier is, of hoe relevant de opname is voor onderzoek — kun je al aan de bron beslissen wat er met een bestand gebeurt. Zo vermijd je dat overbodige of gevoelige data onnodig rondslingert \parencite{CHSU2023}.
 
-Voor bakkerijen is het integreren van zowel operationele data als contextuele data cruciaal voor een nauwkeurige voorspelling. Een zorgvuldige data-preprocessing versterkt deze effecten verder. De combinatie van deze data en machine-learningmodellen stelt kleine ondernemingen in staat om de personeelsplanning te optimaliseren.
+\section{Oplossingsdomein}%
+\label{subsec:lit_oplossingsdomein}
 
-De uitdaging ligt in het praktisch implementeren van deze technologieën. Een proof-of-concept moet niet alleen robuust zijn, maar ook praktisch toepasbaar en gebruiksvriendelijk voor de eindgebruiker.
+\subsection{Cloudarchitectuur en kostenefficiënte opslag op Microsoft Azure}
+Om die gigantische datagroei het hoofd te bieden en tegelijk veilig te werken, is een overstap naar de cloud — specifiek Microsoft Azure — een logische stap \parencite{AzureWellArchitected2026}. Binnen Azure Blob Storage kun je al die videobestanden kwijt en ze heel kostenefficiënt indelen in verschillende opslaglagen (\emph{storage tiers}) \parencite{AzureLifecycle2026}:
+\begin{itemize}
+    \item \textbf{Hot Tier:} Voor data die je nu meteen en heel vaak nodig hebt, zoals opnames van simulaties die deze week nog besproken worden \parencite{AzureLifecycle2026}.
+    \item \textbf{Cool Tier:} Voor data die je minder vaak raadpleegt, maar toch snel bij de hand wilt hebben (bijvoorbeeld voor herexamens), en waar je minder voor betaalt \parencite{AzureLifecycle2026}.
+    \item \textbf{Cold / Archive Tier:} De goedkoopste optie, puur bedoeld voor langdurig archiveren van onderzoeksdata waar je bijna nooit meer naar omkijkt \parencite{AzureWellArchitected2026}.
+\end{itemize}
+
+\subsection{Geautomatiseerd Lifecycle Management en regelgebaseerde opschoning}
+Handmatig al die bestanden opvolgen, verplaatsen naar een andere laag of op tijd verwijderen is monnikenwerk en simpelweg te gevoelig voor menselijke fouten. Gelukkig biedt Azure hier een handige tool voor: \emph{Lifecycle Management rules} \parencite{AzureLifecycle2026}.
+
+Dit zijn regels die je vooraf instelt op basis van mappen, locaties of metadata-tags. Zodra een bestand een bepaalde leeftijd bereikt of aan een voorwaarde voldoet, grijpt het systeem automatisch in: het verhuist de video naar een goedkopere laag of wist het definitief wanneer de bewaartermijn erop zit \parencite{AzureLifecycle2026}. Zo zorg je er op een automatische manier voor dat je volledig GDPR-compliant blijft zonder dat iemand er elke keer aan moet denken \parencite{AzureWellArchitected2026}.
+
+\section{Conclusie}%
+\label{subsec:lit_conclusie}
+
+Als we alles even op een rij zetten, dan zie je dat een goede aanpak voor het Zorglab draait om een gezonde balans tussen strenge privacyregels en slimme automatisering. Enerzijds dicteert de wetgeving dat we zuinig moeten omspringen met data, goed moeten beveiligen en een strak onderscheid moeten maken tussen tijdelijke onderwijsdata en onderzoeksdata \parencite{CHSU2023, GDPR2016, Sensors2025}. Anderzijds geeft de cloud via Azure ons de technische troeven in handen om dit met opslaglagen en lifecycle rules netjes te automatiseren \parencite{AzureWellArchitected2026, AzureLifecycle2026}.
+
+De echte uitdaging van deze bachelorproef zit hem erin om al deze theorie in de praktijk te gieten tot een werkende Proof of Concept voor het Zorglab. Dat brengt ons meteen bij het volgende hoofdstuk, waar we de methodologie en het concrete stappenplan uitwerken.

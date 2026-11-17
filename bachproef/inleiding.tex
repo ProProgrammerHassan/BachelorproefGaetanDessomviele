@@ -2,77 +2,47 @@
 %% Inleiding
 %%=============================================================================
 
-\chapter{\IfLanguageName{dutch}{Inleiding}{Introduction}}%
-\label{ch:inleiding}
+\chapter{Inleiding}%
+\label{sec:bp_inleiding}
 
-Het correct inschatten van de benodigde personeelsbezetting vormt een belangrijke uitdaging voor kleine detailhandelaars. In sectoren waar de verkoop sterk fluctueert onder invloed van externe factoren zoals weersomstandigheden, weekends, feestdagen en lokale evenementen, is het moeilijk om de personeelsplanning optimaal af te stemmen op de verwachte drukte. Een onderschatting van de personeelsbehoefte kan leiden tot lange wachttijden en overbelasting van medewerkers, wat een negatieve impact heeft op de klanttevredenheid. Een overschatting resulteert dan weer in onnodige loonkosten en een verminderde rendabiliteit.
+Het Zorglab van HOGENT is een geavanceerde simulatieomgeving waarin studenten gezondheidszorg en onderzoekers praktijksituaties oefenen en analyseren. Om leerprocessen te ondersteunen en onderzoeksdata te verzamelen, wordt er uitgebreid gebruikgemaakt van video-recordings. De huidige technische opzet steunt op apparatuur en software zoals Noldus VISO, gecombineerd met Axis-camera’s en Microsoft Teams.
 
-Deze bachelorproef situeert zich binnen de context van een lokale bakkerij, namelijk Bakkerij Bossu in Nazareth. De focus ligt op het inzetten van operationele data (zoals historische verkoopcijfers en openingstijden) en contextuele data (zoals feestdagen en seizoensinvloeden) in combinatie met machine-learningmodellen om verkoopvoorspellingen te genereren. Op basis van deze voorspellingen wordt vervolgens een berekening gemaakt van de benodigde personeelsbezetting.
+Deze werkwijze brengt echter belangrijke uitdagingen met zich mee. Ten eerste zorgen de hoogwaardige videobestanden voor snelgroeiende datavolumes, wat druk legt op de lokale opslaginfrastructuur en de beheerskosten verhoogt. Ten tweede – en dat is het voornaamste knelpunt – zijn videobeelden van studenten en simulanten aan te merken als gevoelige persoonsgegevens. Onder de Algemene Verordening Gegevensbescherming (AVG/GDPR) geldt een streng juridisch kader rond opslaglocaties, toegangsbeheer, bewaartermijnen en het expliciete onderscheid tussen onderwijsdata (tijdelijk) en onderzoeksdata (langduriger, met specifieke toestemming).
 
-Het onderwerp wordt afgebakend tot het ontwikkelen van een proof-of-concept dat verkoopvoorspellingen vertaalt naar een indicatie van het aantal benodigde medewerkers. De effectieve personeelsplanning (zoals individuele uurroosters of contractuele beperkingen) valt buiten de scope van dit onderzoek.
+Bovendien mag niet zomaar alle data onbeperkt worden opgeslagen: het principe van dataminimalisatie vereist dat beelden kritisch worden gefilterd en dat overbodige of niet-relevante opnames niet doorstromen naar langdurige opslag.
 
-\section{\IfLanguageName{dutch}{Probleemstelling}{Problem Statement}}%
-\label{sec:probleemstelling}
+\section{Doelstelling \& Relevantie}%
+\label{subsec:bp_doelstelling}
 
-Bakkerij Bossu in Nazareth wordt dagelijks geconfronteerd met schommelingen in verkoopvolumes. Deze variaties worden beïnvloed door factoren zoals weekends, feestdagen, seizoensgebonden trends en lokale omstandigheden. Momenteel gebeurt de personeelsplanning hoofdzakelijk op basis van ervaring en intuïtie. Hoewel deze aanpak waardevol is, biedt ze geen objectieve, datagedreven onderbouwing.
+Het doel van deze bachelorproef is het ontwerpen en demonstreren van een veilige, geautomatiseerde en kostenefficiënte cloudarchitectuur op Microsoft Azure. Door gebruik te maken van Azure Blob Storage Tiers en geautomatiseerde opslag- en opschoonregels wordt een oplossing geboden die voldoet aan de strenge privacy-eisen en de opslagkosten afstemt op het daadwerkelijke gebruik.
 
-Het ontbreken van een voorspellingsmodel kan leiden tot inefficiënties. Bij onderschatting van de drukte ontstaan wachttijden en verhoogde werkdruk voor medewerkers. Bij overschatting worden onnodige loonkosten gemaakt. Dit onderzoek heeft een directe meerwaarde voor Bakkerij Bossu als concrete doelgroep. Daarnaast kan de aanpak relevant zijn voor gelijkaardige lokale bakkerijen of kleine detailhandelszaken met vergelijkbare problematiek.
+\section{Onderzoeksvragen}%
+\label{subsec:bp_onderzoeksvragen}
 
-De primaire doelgroep van deze bachelorproef is de zaakvoerder van Bakkerij Bossu, die verantwoordelijk is voor de personeelsplanning. Secundair kan de ontwikkelde methodologie inspirerend zijn voor andere kleine ondernemingen binnen de retailsector.
+De hoofdonderzoeksvraag luidt: 
+“Hoe kan een kostenefficiënte en GDPR-conforme cloudarchitectuur op Microsoft Azure worden ontworpen en als Proof of Concept worden uitgewerkt voor de opslag van Zorglab-simulatiedata, rekening houdend met dataminimalisatie en regelgebaseerde filtering?”
 
-\section{\IfLanguageName{dutch}{Onderzoeksvraag}{Research question}}%
-\label{sec:onderzoeksvraag}
+Om deze centrale hoofdvraag te beantwoorden, worden de volgende deelvragen onderzocht:
 
-De centrale onderzoeksvraag van deze bachelorproef luidt als volgt:
+\subsection*{Deelvragen Probleemdomein}
+\begin{enumerate}
+    \item \textbf{Huidige praktijk \& brondata:} Wat is de huidige operationele workflow en technische opzet van de videorecordings in het Zorglab HOGENT, en welke datavolumes, formaten en technische knelpunten brengt dit met zich mee?
+    \item \textbf{Privacy \& GDPR:} Welke wettelijke en ethische privacyverplichtingen gelden er voor de verwerking van videobeelden van studenten en simulanten?
+    \item \textbf{Kritische dataminimalisatie:} Hoe kan het principe van dataminimalisatie kritisch worden toegepast om te bepalen welke videodata effectief in aanmerking komt voor verdere verwerking, en welke data omwille van privacy, beperkte meerwaarde of overbodigheid beter niet naar de cloud wordt doorgestuurd?
+\end{enumerate}
 
-\begin{quote}
-Hoe kunnen operationele en contextuele data van een lokale bakkerij, in combinatie met machine-learningmodellen, worden ingezet om de benodigde hoeveelheid personeel te bepalen op basis van verkoopvoorspellingen?
-\end{quote}
+\subsection*{Deelvragen Oplossingsdomein}
+\begin{enumerate}
+    \setcounter{enumi}{3}
+    \item \textbf{Cloudarchitectuur:} Hoe kan een kostenefficiënte en schaalbare cloudarchitectuur op Microsoft Azure worden ontworpen, om de geselecteerde videodata van het Zorglab op te slaan?
+    \item \textbf{Automatisering \& PoC:} Hoe kunnen geautomatiseerde opslag- en opschoonregels op Microsoft Azure worden ingesteld om de bewaartermijnen van de videodata GDPR-compliant te beheren binnen een Proof of Concept?
+\end{enumerate}
 
-Om deze centrale vraag te beantwoorden, worden volgende deelvragen onderzocht:
+\section{Scope van de Proof of Concept (PoC)}%
+\label{subsec:bp_scope}
 
-\textbf{Deelvragen rond het probleem:}
+Om de haalbaarheid van het onderzoek te bewaken, richt de praktische uitwerking (PoC) zich op:
 \begin{itemize}
-    \item Hoe sterk variëren de verkoopvolumes tijdens weekends, feestdagen en seizoensgebonden periodes?
-    \item Welke patronen en trends zijn zichtbaar in de historische verkoopdata?
-    \item Welke operationele en contextuele variabelen hebben een significante invloed op de verkoop?
+    \item \textbf{In scope:} Het opzetten van een Azure Resource Group, Blob Storage Accounts met verschillende storage tiers, het toepassen van metadata-tagging en het configureren van geautomatiseerde Lifecycle Management rules voor transitie en verwijdering van test-videobestanden.
+    \item \textbf{Out of scope:} Het ontwikkelen van complexe AI-modellen voor automatische video-analyse of de volledige fysieke herinrichting van het netwerk in het Zorglab.
 \end{itemize}
-
-\textbf{Deelvragen rond de oplossing:}
-\begin{itemize}
-    \item Welke machine-learningmodellen zijn het meest geschikt voor het voorspellen van verkoopcijfers in een retailcontext?
-    \item Hoe presteren verschillende regressiemodellen en ensemble-methoden in termen van nauwkeurigheid?
-    \item Hoe kunnen verkoopvoorspellingen vertaald worden naar een concrete berekening van de benodigde personeelsbezetting op basis van vooraf gedefinieerde capaciteitsregels?
-\end{itemize}
-
-\section{\IfLanguageName{dutch}{Onderzoeksdoelstelling}{Research objective}}%
-\label{sec:onderzoeksdoelstelling}
-
-Het doel van deze bachelorproef is het ontwikkelen van een proof-of-concept dat Bakkerij Bossu ondersteunt bij het plannen van personeel op basis van datagedreven verkoopvoorspellingen.
-
-Concreet omvat dit:
-
-\begin{itemize}
-    \item Het analyseren van historische operationele en contextuele data.
-    \item Het trainen, vergelijken en evalueren van meerdere machine-learningmodellen voor verkoopvoorspelling.
-    \item Het selecteren van het best presterende model op basis van objectieve evaluatiemetrics zoals RMSE en MAE.
-    \item Het ontwikkelen van een prototype dat voorspelde verkoopcijfers omzet in een berekening van het benodigde aantal medewerkers, op basis van vooraf gedefinieerde capaciteitsregels.
-    \item Het formuleren van aanbevelingen voor de praktische implementatie binnen de bakkerij.
-\end{itemize}
-
-De bachelorproef is succesvol wanneer een werkend proof-of-concept wordt opgeleverd dat betrouwbare verkoopvoorspellingen genereert en een onderbouwde indicatie geeft van de benodigde personeelsbezetting.
-
-\section{\IfLanguageName{dutch}{Opzet van deze bachelorproef}{Structure of this bachelor thesis}}%
-\label{sec:opzet-bachelorproef}
-
-De rest van deze bachelorproef is als volgt opgebouwd:
-
-In Hoofdstuk~\ref{ch:stand-van-zaken} wordt een overzicht gegeven van de stand van zaken binnen het onderzoeksdomein, op basis van een literatuurstudie rond verkoopvoorspelling, machine learning en personeelsplanning.
-
-In Hoofdstuk~\ref{ch:methodologie} wordt de methodologie toegelicht en worden de gebruikte onderzoekstechnieken besproken om een antwoord te kunnen formuleren op de onderzoeksvragen.
-
-In Hoofdstuk~\ref{ch:resultaten} worden de resultaten van de data-analyse en de modelvergelijking besproken.
-
-In Hoofdstuk~\ref{ch:proof-of-concept} wordt het ontwikkelde proof-of-concept toegelicht en wordt beschreven hoe de verkoopvoorspellingen vertaald worden naar personeelsbehoefte.
-
-In Hoofdstuk~\ref{ch:conclusie}, tenslotte, wordt de conclusie gegeven en een antwoord geformuleerd op de onderzoeksvragen. Daarbij wordt ook een aanzet gegeven voor toekomstig onderzoek binnen dit domein.
